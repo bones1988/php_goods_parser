@@ -10,6 +10,7 @@
     }
   ],
   "require": {
-    "phpoffice/phpspreadsheet" : "*"
+    "phpoffice/phpspreadsheet" : "*",
+    "ext-mysqli": "*"
   }
 }

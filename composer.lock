@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53fdac553e243104a546a95c02e30161",
+    "content-hash": "f745186fe4b88fc90ad0caa7687e6bd6",
     "packages": [
         {
             "name": "markbaker/complex",
@@ -318,7 +318,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-mysqli": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
 }
