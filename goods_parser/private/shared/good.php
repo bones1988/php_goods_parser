@@ -7,5 +7,6 @@ class Good
         public int $stock1 = 0;
         public int $stock2 = 0;
         public string $manufacturer = '';
+        public string $signs = '';
     }
     ?>

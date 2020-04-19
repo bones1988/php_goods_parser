@@ -11,5 +11,5 @@
 
 <body>
 <header>
-    <h1><?php echo $page_title?></h1>
+    <div id='title'><?php echo $page_title?></div>
 </header>

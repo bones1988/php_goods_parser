@@ -1,5 +1,6 @@
 <?php use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+
 require_once '../private/functions/database_functions.php';
 require_once '../private/functions/query_functions.php';
 
@@ -8,6 +9,7 @@ $page_title = 'File parse'; ?>
 <?php
 include_once '../private/shared/header.php';
 include_once '../private/shared/good.php';
+include_once '../private/shared/goods_table.php';
 require '../../vendor/autoload.php';
 ?>
 
@@ -32,6 +34,7 @@ require '../../vendor/autoload.php';
         exit('Error parsing file' . $php_errormsg);
     }
     $connection = db_connect();
+    $goods = [];
     for ($row = 1; $row <= $highestRow; ++$row) {
         $good = new Good;
         $good->name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
@@ -42,14 +45,13 @@ require '../../vendor/autoload.php';
         $good->manufacturer = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
         if ($good->price != 0) {
             insert_good($good, $connection);
-            echo $good->name . ' ' . $good->price . ' ' . $good->optPrice
-                . ' ' . $good->stock1 . ' ' . $good->stock2 . ' ' . $good->manufacturer;
-            echo '<br />';
+            $goods[] = $good;
         }
     }
+    show_goods($goods);
     db_disconnect($connection);
     ?>
 </div>
-
+<a href="http://localhost:63342/brainforce/goods_parser/public/index.php">вернуться в начало</a>
 <?php include_once '../private/shared/end_of_file.php'; ?>
 
