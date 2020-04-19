@@ -1,6 +1,15 @@
 <?php
 require_once 'database_functions.php';
 
+function getAll($connection) {
+    $sql = "select * from goods";
+    $result =  $connection->query($sql);
+    if($result->num_rows===0) {
+        exit('Nothing found');
+    }
+    return $result;
+}
+
 function insert_good($good, $connection)
 {
     $name = '';

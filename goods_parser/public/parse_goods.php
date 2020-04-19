@@ -54,4 +54,3 @@ require '../../vendor/autoload.php';
 </div>
 <a href="http://localhost:63342/brainforce/goods_parser/public/index.php">вернуться в начало</a>
 <?php include_once '../private/shared/end_of_file.php'; ?>
-
