@@ -54,7 +54,7 @@
             if(valid) {
                 $.ajax({
                     type: "GET",
-                    url: 'http://localhost:63342/brainforce/goods_parser/public/data.php?price=' + $('#opt').val() +
+                    url: 'http://localhost:63342/brainforce/goods_parser/private/shared/data.php?price=' + $('#opt').val() +
                         '&from=' + from + '&before=' + before + '&qnt=' + $('#qnt').val() +
                         '&stock=' + stock,
                     data: $(this).serialize(),
