@@ -21,5 +21,3 @@ function confirm_db_connect() {
         exit($msg);
     }
 }
-?>
-

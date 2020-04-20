@@ -90,5 +90,3 @@ function show_goods_first_task($goods)
         echo "</table>";
     }
 }
-
-?>

@@ -1,8 +1,11 @@
-<?php use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+<?php
+
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-require_once '../private/functions/database_functions.php';
-require_once '../private/functions/query_functions.php';
+require_once '../private/shared/config.php';
+require_once DIR_FUNCTIONS . 'database_functions.php';
+require_once DIR_FUNCTIONS . 'query_functions.php';
 
 $page_title = 'File parse'; ?>
 

@@ -41,6 +41,7 @@ function getByParams($connection, $params)
     $third = $stock;
     $statement->execute();
     $result = $statement->get_result();
+    $statement->close();
     if ($result->num_rows === 0) {
         exit('Nothing found');
     }
@@ -69,4 +70,5 @@ values(?, ?, ?, ?, ?, ?)");
     $stock2 = $good->stock2;
     $manufacturer = $good->manufacturer;
     $statement->execute();
+    $statement->close();
 }
