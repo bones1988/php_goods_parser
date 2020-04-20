@@ -10,6 +10,16 @@ function getAll($connection) {
     return $result;
 }
 
+function getByParams($connection) {
+    $sql = "select * from goods";
+    $result =  $connection->query($sql);
+    if($result->num_rows===0) {
+        exit('Nothing found');
+    }
+    return $result;
+}
+
+
 function insert_good($good, $connection)
 {
     $name = '';
