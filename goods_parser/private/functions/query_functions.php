@@ -1,19 +1,47 @@
 <?php
 require_once 'database_functions.php';
 
-function getAll($connection) {
+function getAll($connection)
+{
     $sql = "select * from goods";
-    $result =  $connection->query($sql);
-    if($result->num_rows===0) {
+    $result = $connection->query($sql);
+    if ($result->num_rows === 0) {
         exit('Nothing found');
     }
     return $result;
 }
 
-function getByParams($connection) {
-    $sql = "select * from goods";
-    $result =  $connection->query($sql);
-    if($result->num_rows===0) {
+function getByParams($connection, $params)
+{
+    $opt = $params['opt'];
+    $from = $params['from'];
+    $before = $params['before'];
+    $qnt = $params['qnt'];
+    $stock = $params['stock'];
+    $sql = "select * from goods where ";
+    if ($opt === 'opt_price') {
+        $sql .= ' opt_price  > ?  and opt_price < ?';
+    } else {
+        $sql .= ' price  > ?  and price < ?';
+    }
+
+    $sql .= ' and (stock_1+stock_2) ';
+    if ($qnt === 'less') {
+        $sql .= ' < ?';
+    } else {
+        $sql .= '> ?';
+    }
+    $statement = $connection->prepare($sql);
+    $first = 0;
+    $second = 0;
+    $third = 0;
+    $statement->bind_param("ddd", $first, $second, $third);
+    $first = $from;
+    $second = $before;
+    $third = $stock;
+    $statement->execute();
+    $result = $statement->get_result();
+    if ($result->num_rows === 0) {
         exit('Nothing found');
     }
     return $result;

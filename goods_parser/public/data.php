@@ -23,8 +23,15 @@ function convert_result($result){
     return $goods;
 }
 
+$params = [];
+$params['opt'] = $_GET["price"];
+$params['from'] = $_GET["from"];
+$params['before'] = $_GET["before"];
+$params['qnt'] = $_GET["qnt"];
+$params['stock'] = $_GET["stock"];
+
 $connection = db_connect();
-$result = getByParams($connection);
+$result = getByParams($connection, $params);
 $goods = convert_result($result);
 show_goods_first_task($goods);
 db_disconnect($connection);
